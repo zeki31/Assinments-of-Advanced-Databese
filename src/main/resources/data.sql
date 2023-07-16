@@ -1,2 +1,28 @@
-INSERT INTO test_table(name, old)
-VALUES('Taro', 30), ('Jiro', 25), ('Saburo', 22);
+INSERT INTO account(accountId, accountName, branchId)
+values (1, 'Andy', 1),
+       (2, 'Becky', 1),
+       (3, 'Clare', 1),
+       (4, 'Daniel', 2),
+       (5, 'Elen', 2),
+       (6, 'Francis', 2),
+       (7, 'George', 2),
+       (8, 'Henry', 3),
+       (9, 'Isaac', 3),
+       (10, 'John', 3);
+
+INSERT INTO branch(branchId, branchName)
+values (1, 'Shibuya'),
+       (2, 'Shinjuku'),
+       (3, 'Ikebukuro');
+
+INSERT INTO balance
+values (1, 1, 1000, '2023-06-29 16:30:00', 0),
+       (2, 2, 1000, '2023-06-29 16:30:00', 0),
+       (3, 3, 1000, '2023-06-29 16:30:00', 0),
+       (4, 4, 1000, '2023-06-29 16:30:00', 0),
+       (5, 5, 1000, '2023-06-29 16:30:00', 0),
+       (6, 6, 1000, '2023-06-29 16:30:00', 0),
+       (7, 7, 1000, '2023-06-29 16:30:00', 0),
+       (8, 8, 1000, '2023-06-29 16:30:00', 0),
+       (9, 9, 1000, '2023-06-29 16:30:00', 0),
+       (10, 10, 1000, '2023-06-29 16:30:00', 0);

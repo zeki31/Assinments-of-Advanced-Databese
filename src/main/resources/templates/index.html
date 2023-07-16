@@ -1,27 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--    <link rel="stylesheet" type="text/css" href="index.css">-->
-    <title>トップページ</title>
+    <link th:href="@{/css/index.css}" rel="styleSheet">
+    <title>top</title>
 </head>
 <body>
-<div id="header">
-    <div id="head_contents_top">
-        <div id="logoArea">
-            JJE BANK
-        </div>
-    </div>
-</div>
+<div th:insert="~{common/header}"></div>
 <div class="maincontents">
     <div class="welcome_area">
-        <p>Welcome back, <span class="welcome_name">Andy</span></p>
+        <p>Welcome back, <span class="welcome_name" th:inline="text"><span th:remove="tag" sec:authentication="name"></span></span> !</p>
     </div>
     <div class="balance_area">
-        <p class="balance_title">Total Balance</p>
-        <p class="balance">${message}</p>
+        <div class="balance_area_inner">
+            <p class="balance_title">Total Balance</p>
+            <p th:each="balance : ${balanceList}" class="balance">
+                <span class="yen">¥</span><span th:text="${balance.money}" class="money"></span>
+            </p>
+        </div>
     </div>
     <a href="transaction_list.html" th:href="@{/transaction}" class="transaction_area"><!-- "@{/issues}" @ はthymeleafでリンクを表す記法 -->
         <span class="transaction_text">Start Transaction</span>
@@ -29,132 +28,6 @@
     <a href="remove_list.html" th:href="@{/remove}" class="remove_area">
         <span class="remove_text">Remove Transaction</span>
     </a>
-    <table>
-        <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>old</th>
-        </tr>
-        <tr th:each="test : ${testList}">
-            <td th:text="${test.id}"></td>
-            <td th:text="${test.name}"></td>
-            <td th:text="${test.old}"></td>
-        </tr>
-    </table>
 </div>
 </body>
 </html>
-
-<style>
-    /* html */
-    html {
-        overflow-y: scroll;
-    }
-    html {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
-    * {
-        font-family: OpenSans, sans-serif;
-    }
-
-    /* header */
-    #header {
-        height: 55px;
-        width: 100%;
-        position: fixed;
-        box-shadow: 0px 1px 5px rgb(0 0 0 / 20%);
-        background-color: white;
-        z-index: 1000;
-        left: 50%;
-        transform: translate(-50%, 0%);
-        padding-left: 50%;
-        padding-right: 50%;
-    }
-    #head_contents_top {
-        width: 800px;
-        margin: auto;
-        display: flex;
-    }
-    #logoArea {
-        font-size: 30px;
-        font-weight: bold;
-        color: #051F4E;
-        margin: 10px 0;
-    }
-
-    /* body */
-    body {
-        margin: 0;
-        font-size: 18px;
-        color: #051F4E;
-    }
-    .maincontents {
-        width: 1200px;
-        margin: 0 auto;
-        padding: 60px;
-    }
-    .welcome_area {
-        width: 800px;
-        margin: 0 auto;
-    }
-    .welcome_name {
-        font-size: 22px;
-        font-weight: bold;
-    }
-    .balance_area {
-        background: #FFF;
-        box-shadow: 0px 1px 5px rgb(0 0 0 / 20%);
-        border-radius: 1.875rem;
-        margin: 20px auto;
-        width: 800px;
-        height: 258px;
-        text-align: center;
-    }
-    .balance_text {
-        line-height: inherit;
-    }
-    .transaction_area {
-        background: #153bff;
-        box-shadow: 0px 1px 5px rgb(0 0 0 / 20%);
-        border-radius: 1.875rem;
-        opacity: 1;
-        width: 400px;
-        height: 80px;
-        border: none;
-        margin: 30px auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-    }
-    .transaction_area:hover {
-        background: #0428D1;
-    }
-    .transaction_text {
-        font-size: 18px;
-        color: #FFF;
-    }
-    .remove_area {
-        background: #FFF;
-        box-shadow: 0px 1px 5px rgb(0 0 0 / 20%);
-        border-radius: 1.875rem;
-        opacity: 1;
-        width: 400px;
-        height: 80px;
-        border: none;
-        margin: 30px auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-    }
-    .remove_area:hover {
-        background: #ebeaea;
-    }
-    .remove_text {
-        font-size: 18px;
-        color: #f60505;
-    }
-</style>

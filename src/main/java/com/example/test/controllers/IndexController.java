@@ -20,9 +20,14 @@ public class IndexController {
     // GET /
     @GetMapping()
     public String index(Model model) {
-        String sql = "SELECT * FROM test_table";
+        String sql = "SELECT * FROM account where accountId = 2";
         List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
-        model.addAttribute("testList", list);
+        model.addAttribute("accountList", list);
+
+        String sql2 = "SELECT * FROM balance where accountId = 2";
+        List<Map<String, Object>> list2 = jdbcTemplate.queryForList(sql2);
+        model.addAttribute("balanceList", list2);
+
         return "index";
     }
 
