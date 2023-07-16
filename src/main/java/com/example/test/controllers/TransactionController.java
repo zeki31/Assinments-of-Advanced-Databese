@@ -1,26 +1,26 @@
-package com.example.test.web.removes;
+package com.example.test.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.example.test.domain.removes.RemoveService;
+import com.example.test.models.services.TransactionService;
 import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
 
-public class RemoveController {
+public class TransactionController {
     // GET /issue
 
-    private final RemoveService removeService;
+    private final TransactionService transactionService;
     /**
      *
      * @param model
      * @return
      */
-    @GetMapping("/removes")
+    @GetMapping("/transaction")
     public String showList(Model model){
-        model.addAttribute("removeList", removeService.findAll());
-        return "remove_list";
+        model.addAttribute("transactionList", transactionService.findAll());
+        return "transaction_list";
     }
 }

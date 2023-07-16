@@ -1,7 +1,8 @@
-package com.example.test.domain.removes;
+package com.example.test.models.services;
 
 import java.util.List;
 
+import com.example.test.models.entities.RemoveEntity;
 import org.springframework.stereotype.Service;
 
 @Service
