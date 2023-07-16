@@ -23,12 +23,24 @@
         <p class="balance_title">Total Balance</p>
         <p class="balance">${message}</p>
     </div>
-    <a href="transaction_list.html" th:href="@{/transactions}" class="transaction_area"><!-- "@{/issues}" @ はthymeleafでリンクを表す記法 -->
+    <a href="transaction_list.html" th:href="@{/transaction}" class="transaction_area"><!-- "@{/issues}" @ はthymeleafでリンクを表す記法 -->
         <span class="transaction_text">Start Transaction</span>
     </a>
-    <a href="remove_list.html" th:href="@{/removes}" class="remove_area">
+    <a href="remove_list.html" th:href="@{/remove}" class="remove_area">
         <span class="remove_text">Remove Transaction</span>
     </a>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>old</th>
+        </tr>
+        <tr th:each="test : ${testList}">
+            <td th:text="${test.id}"></td>
+            <td th:text="${test.name}"></td>
+            <td th:text="${test.old}"></td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.example.test.domain.transactions;
+package com.example.test.models.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
