@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @SpringBootApplication
 @RestController
 public class TestApplication {
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Throwable {
         SpringApplication.run(TestApplication.class, args);
     }
 }
